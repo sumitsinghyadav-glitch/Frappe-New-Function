@@ -1,0 +1,12 @@
+[project]
+name = "erp_ai_assistant"
+authors = [{ name = "Sumit", email = "admin@sumit.local" }]
+description = "Simple AI: chat assistant for ERPNext with an offline Help Guide and an AI Agent that creates transactions from plain-language commands"
+requires-python = ">=3.10"
+readme = "README.md"
+dynamic = ["version"]
+dependencies = ["anthropic", "openai"]
+
+[build-system]
+requires = ["flit_core >=3.4,<4"]
+build-backend = "flit_core.buildapi"

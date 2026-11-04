@@ -1,0 +1,157 @@
+{
+ "actions": [],
+ "creation": "2026-10-19 12:00:00.000000",
+ "description": "Settings for the Simple AI chat. The Help Guide works without any AI; these settings control the optional AI Agent.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "enabled",
+  "provider",
+  "api_key",
+  "column_break_1",
+  "model",
+  "base_url",
+  "section_reliability",
+  "fallback_models",
+  "use_local_fallback",
+  "column_break_2",
+  "request_timeout",
+  "reasoning_effort",
+  "tool_set",
+  "effort",
+  "max_steps",
+  "section_break_1",
+  "instructions"
+ ],
+ "fields": [
+  {
+   "default": "1",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled"
+  },
+  {
+   "default": "Free - Local AI (Ollama)",
+   "description": "Free - Local AI runs on this server and needs no key. Gemini, Groq and OpenRouter give a free API key after sign-up (with daily limits). OpenAI and Anthropic are paid. Custom works with any OpenAI-compatible API (for example DeepSeek, Mistral, Together, Azure OpenAI or your own server).",
+   "fieldname": "provider",
+   "fieldtype": "Select",
+   "label": "AI Provider",
+   "options": "Free - Local AI (Ollama)\nGoogle Gemini (free API key)\nGroq (free API key)\nOpenRouter (free models)\nOpenAI (ChatGPT)\nAnthropic (Claude)\nCustom (any OpenAI-compatible API)"
+  },
+  {
+   "depends_on": "eval:doc.provider != 'Free - Local AI (Ollama)'",
+   "description": "Not needed for Free - Local AI. Optional for a Custom server that has no key.",
+   "fieldname": "api_key",
+   "fieldtype": "Password",
+   "label": "API Key",
+   "length": 300
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Leave empty for the provider's default: qwen3:4b-instruct (Local), gemini-flash-lite-latest (Gemini), llama-3.3-70b-versatile (Groq), openrouter/auto, gpt-4.1-mini, claude-opus-5-5. Required for Custom.",
+   "fieldname": "model",
+   "fieldtype": "Data",
+   "label": "Model"
+  },
+  {
+   "description": "The API address, ending in /v1 for most providers (for example https://api.deepseek.com/v1). Leave empty to use the provider's standard address. Required for Custom.",
+   "fieldname": "base_url",
+   "fieldtype": "Data",
+   "label": "Server URL"
+  },
+  {
+   "fieldname": "section_reliability",
+   "fieldtype": "Section Break",
+   "label": "Speed and Reliability"
+  },
+  {
+   "description": "One model per line, tried in order when the main model is busy, rate-limited or down. Leave empty to use the built-in list for the provider.",
+   "fieldname": "fallback_models",
+   "fieldtype": "Small Text",
+   "label": "Fallback Models"
+  },
+  {
+   "default": "1",
+   "description": "When every cloud model fails, use the free local AI on this server (slower).",
+   "fieldname": "use_local_fallback",
+   "fieldtype": "Check",
+   "label": "Use Local AI as Last Fallback"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "25",
+   "description": "Seconds to wait for a model before trying the next one.",
+   "fieldname": "request_timeout",
+   "fieldtype": "Int",
+   "label": "Request Timeout (seconds)"
+  },
+  {
+   "default": "Low",
+   "description": "How much the model thinks before acting. Low is fastest. Ignored by models that do not support it.",
+   "fieldname": "reasoning_effort",
+   "fieldtype": "Select",
+   "label": "Reasoning Effort",
+   "options": "Provider default\nLow\nMedium\nHigh"
+  },
+  {
+   "default": "Fast (recommended)",
+   "description": "Fast gives the AI a short list of one-call tools (purchase, sales, stock transfer, lookups), which makes it quicker and more reliable. All tools also allow editing drafts and reading any screen's fields.",
+   "fieldname": "tool_set",
+   "fieldtype": "Select",
+   "label": "Tool Set",
+   "options": "Fast (recommended)\nAll tools"
+  },
+  {
+   "default": "medium",
+   "depends_on": "eval:doc.provider == 'Anthropic (Claude)'",
+   "description": "How much Claude thinks before acting. Higher is slower but more careful.",
+   "fieldname": "effort",
+   "fieldtype": "Select",
+   "label": "Claude Effort",
+   "options": "low\nmedium\nhigh"
+  },
+  {
+   "default": "30",
+   "description": "Maximum tool calls per message.",
+   "fieldname": "max_steps",
+   "fieldtype": "Int",
+   "label": "Max Steps"
+  },
+  {
+   "fieldname": "section_break_1",
+   "fieldtype": "Section Break",
+   "label": "Company Rules"
+  },
+  {
+   "description": "Extra rules for the AI Agent, for example a default warehouse or naming conventions.",
+   "fieldname": "instructions",
+   "fieldtype": "Small Text",
+   "label": "Company Instructions"
+  }
+ ],
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-10-25 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "ERP AI Assistant",
+ "name": "AI Assistant Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "read": 1,
+   "role": "System Manager",
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

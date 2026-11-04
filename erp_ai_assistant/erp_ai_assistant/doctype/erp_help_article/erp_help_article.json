@@ -1,0 +1,146 @@
+{
+ "actions": [],
+ "autoname": "field:article_key",
+ "creation": "2026-10-24 10:00:00.000000",
+ "description": "User manual of this ERP. DocType Manuals are generated automatically from the system (including customizations); Company SOPs are written by you.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "title",
+  "article_type",
+  "source",
+  "column_break_1",
+  "ref_doctype",
+  "module",
+  "is_custom",
+  "section_content",
+  "content",
+  "section_meta",
+  "keywords",
+  "article_key",
+  "last_built",
+  "data"
+ ],
+ "fields": [
+  {
+   "bold": 1,
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Title",
+   "reqd": 1
+  },
+  {
+   "default": "Company SOP",
+   "fieldname": "article_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Article Type",
+   "options": "DocType Manual\nProcess Guide\nCompany SOP"
+  },
+  {
+   "default": "Manual",
+   "description": "Auto articles are rebuilt from the system; Manual articles are never overwritten.",
+   "fieldname": "source",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Source",
+   "options": "Manual\nAuto",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ref_doctype",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Screen (DocType)",
+   "options": "DocType"
+  },
+  {
+   "fieldname": "module",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Module"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_custom",
+   "fieldtype": "Check",
+   "in_standard_filter": 1,
+   "label": "Has Customizations"
+  },
+  {
+   "fieldname": "section_content",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "content",
+   "fieldtype": "Markdown Editor",
+   "label": "Content"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_meta",
+   "fieldtype": "Section Break",
+   "label": "Search Details"
+  },
+  {
+   "description": "Extra words people may use when asking about this (Hindi/Hinglish welcome)",
+   "fieldname": "keywords",
+   "fieldtype": "Small Text",
+   "label": "Keywords"
+  },
+  {
+   "description": "Unique key, e.g. sop:petty-cash. Filled automatically if left empty.",
+   "fieldname": "article_key",
+   "fieldtype": "Data",
+   "label": "Article Key",
+   "unique": 1
+  },
+  {
+   "fieldname": "last_built",
+   "fieldtype": "Datetime",
+   "label": "Last Built",
+   "read_only": 1
+  },
+  {
+   "fieldname": "data",
+   "fieldtype": "JSON",
+   "hidden": 1,
+   "label": "Data"
+  }
+ ],
+ "links": [],
+ "modified": "2026-10-24 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "ERP AI Assistant",
+ "name": "ERP Help Article",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "export": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "write": 1
+  },
+  {
+   "read": 1,
+   "report": 1,
+   "role": "Desk User"
+  }
+ ],
+ "search_fields": "module,ref_doctype,article_type",
+ "show_title_field_in_link": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "title"
+}
