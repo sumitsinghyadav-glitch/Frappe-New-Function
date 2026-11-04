@@ -30,6 +30,9 @@ bench restart
 
 Then reload the browser (Ctrl+Shift+R). The **Simple AI** button appears in the bottom-right corner.
 
+> **This repository is private.** You must be added as a collaborator first. When `bench get-app` asks for a password, use a GitHub token, not your GitHub password. Or use SSH if you have an SSH key on GitHub:
+> `bench get-app git@github.com:sumitsinghyadav-glitch/Frappe-New-Function.git`
+
 ### Install on frappe_docker
 
 Add the app to your custom image. For example, add these lines to your Dockerfile:
@@ -42,6 +45,8 @@ RUN cd /home/frappe/frappe-bench \
  && ln -sfn /home/frappe/frappe-bench/apps/erp_ai_assistant/erp_ai_assistant/public sites/assets/erp_ai_assistant \
  && (grep -qx erp_ai_assistant sites/apps.txt || echo erp_ai_assistant >> sites/apps.txt)
 ```
+
+Because the repository is private, either clone it next to your Dockerfile and `COPY` it in instead of using `git clone`, or put your GitHub token in the URL (`https://<token>@github.com/...`). If you use the token, build the image only on your own machine and do not share it.
 
 Rebuild the image and recreate the containers. Then run once inside the backend container:
 
